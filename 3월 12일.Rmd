@@ -50,3 +50,9 @@ str(hflights2)
 library(dplyr)
 ```
 
+```{r}
+# 1월 10일 데이터 출력
+temp_jan10 <- filter(hflights2, Month==1, DayofMonth==10)
+temp_jan10
+```
+
