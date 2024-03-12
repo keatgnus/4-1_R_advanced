@@ -18,6 +18,7 @@ knitr::opts_chunk$set(
 ## 라이브러리 로드
 - hflights
 - 설치: install.packages()
+- 모든 변수제거: rm(list = ls())
 
 ```{r,warning=FALSE,message=FALSE}
 library(hflights)
@@ -53,6 +54,11 @@ library(dplyr)
 ```{r}
 # 1월 10일 데이터 출력
 temp_jan10 <- filter(hflights2, Month==1, DayofMonth==10)
-temp_jan10
+temp_jan10 %>% head()
+
+# 2011년 2월4일 휴스턴공항(IAH) 발 AA항공사의 운행기록 추출
+AA_20110204 <- hflights %>% filter(Month==2, DayofMonth==4, UniqueCarrier=="AA")
+AA_20110204
+AA_20110204 %>% dim()
 ```
 
