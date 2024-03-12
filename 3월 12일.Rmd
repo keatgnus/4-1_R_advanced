@@ -1,0 +1,52 @@
+---
+title: "R심화_3월 12일"
+author: "Seongtaek"
+date: "2024-03-12"
+output:
+  prettydoc::html_pretty:
+    theme: cayman
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  comment = "#>",
+  collapse = TRUE # Code와 Output을 분리시키지 않고 하나로 출력시켜 줌
+  )
+```
+
+## 라이브러리 로드
+- hflights
+- 설치: install.packages()
+
+```{r,warning=FALSE,message=FALSE}
+library(hflights)
+```
+
+```{r}
+# 차원 파악
+dim(hflights)
+
+# 새로운 변수명으로 저장
+hflights2 <- hflights
+
+# 데이터셋 로드
+head(hflights2) 
+
+# View 형식으로 로드
+View(hflights2)
+
+# class 확인
+class(hflights2)
+
+# 속성 확인
+str(hflights2)
+```
+
+## 라이브러리 로드
+- dplyr
+
+```{r,warning=FALSE,message=FALSE}
+library(dplyr)
+```
+
