@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 ```
 
 ## 라이브러리 로드
-- hflights
+- hflights (항공 데이터셋)
 - 설치: install.packages()
 - 모든 변수제거: rm(list = ls())
 
@@ -51,6 +51,8 @@ str(hflights2)
 library(dplyr)
 ```
 
+### dplyr 패키지의 다양한 기능들
+
 ```{r}
 # 1월 10일 데이터 출력
 temp_jan10 <- filter(hflights2, Month==1, DayofMonth==10)
@@ -60,5 +62,33 @@ temp_jan10 %>% head()
 AA_20110204 <- hflights %>% filter(Month==2, DayofMonth==4, UniqueCarrier=="AA")
 AA_20110204
 AA_20110204 %>% dim()
+
+# 2011년 3월, 5월에 휴스턴공항(IAH)을 이륙한 UA항공사의 운행기록 추출
+UA_201103_201105 <- hflights2 %>% filter(Month==3|Month==5, UniqueCarrier=="UA")
+UA_201103_201105 %>% head()
+UA_201103_201105 %>% dim()
+
+# 2011년에 도착지연시간(ArrDelay)이 100분 이상인 운행 기록을 추출하세요. 몇건인가요?
+ArrDelay <- hflights2 %>% filter(ArrDelay >= 100)
+ArrDelay %>% head()
+ArrDelay %>% dim()
+
+# 예제) 2011년에 AA 항공사의 도착지연시간(ArrDelay)이 100분 이상인 운행기록을 추출하세요. 몇건인가요?
+AA_ArrDelay <- hflights2 %>% filter(ArrDelay >= 100,UniqueCarrier=="AA")
+AA_ArrDelay %>% head()
+AA_ArrDelay %>% dim()
+
+### 인덱싱
+# 열이름이 UniqueCarrier 인 열 추출
+hflights2$UniqueCarrier %>% head()
+
+# 7번째 열(UniqueCarrier열) 추출
+hflights2[,7] %>% head()
+
+### 월 추출 간단한방법
+hflights2 %>% filter(hflights2$Month==5) %>% head()
+hflights2 %>% filter(hflights2$Month==5) %>% dim()
 ```
+
+
 
